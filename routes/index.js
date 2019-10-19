@@ -21,7 +21,7 @@ pool.query('SELECT * FROM rooms',(err, res) =>{
 router.get('/', (req, res) => {
         var roomList = []
         // pool.query('SELECT * FROM rooms INNER JOIN users ON rooms.user_id = users.user_id', function(err, rows, fields) {
-        pool.query('SELECT * FROM rooms', function(err, results) {
+        pool.query('SELECT r.title, r.price, r.room_img, r.address, u.user_img FROM rooms as r INNER JOIN users as u ON r.user_id = u.user_id', function(err, results) {
                 if (err) {
                         res.status(500).json({"status_code": 500,"status_message": "internal server error"});
                 } else {
@@ -32,7 +32,7 @@ router.get('/', (req, res) => {
                                         'title':results.rows[i].title,
                                         'price':results.rows[i].price,
                                         'room_img':results.rows[i].room_img,
-                                        'user_photo':results.rows[i].room_img,
+                                        'user_photo':results.rows[i].user_img,
                                         'address':results.rows[i].address
                                 }
                                 // Add object into array

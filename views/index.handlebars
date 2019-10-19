@@ -1,47 +1,82 @@
-<main class="house-container">
-  {{#each house}}
-        {{#if has_post}}
-  <article class="house">
-    <div class="house-content">
-      <a href="/detail/{{_id}}" class="house-image"><image src='{{house.0.phot1}}'></a>
-      <p class="house-text">
-        <a href="/detail/{{_id}}">{{house.0.caption}}</a>
-      </p>
-      <div class="distance">
-              <div class="walking">
-                      <image class="transport_img" src='/images/walking.png'>
-                              <div class="time">
-                                        <p class="digits">{{house.0.walking}}</p>
-                                        <p class="minutes">min</p>
-                              </div>
-              </div>
-              <div class="bike">
-                      <image class="transport_img" src='/images/bicycle.png'>
-                              <div class="time">
-                                        <p class="digits">{{house.0.bike}}</p>
-                                        <p class="minutes">min</p>
-                              </div>
-              </div>
-              <div class="car">
-                      <image class="transport_img" src='/images/car.png'>
-                              <div class="time">
-                                        <p class="digits">{{house.0.car}}</p>
-                                        <p class="minutes">min</p>
-                              </div>
-              </div>
-      </div>
-      <div class="author">
-              <image class="human" src='{{profile_pic}}'>
-              <p class="house-author">
-                <a href="#">{{first_name}}</a>
-                <a href="/major/{{major}}">#{{major}}</a>
-                <a href="/year/{{year}}">#{{year}}</a>
-              </p>
-     </div>
-     <p class="price">${{house.0.price}}</p>
-    </div>
-  </article>
-   {{/if}}
-  {{/each}}
+<main class="index_body">
+        <div class="house-container">
+        {{#each roomList}}
+                <article class="house">
+                        <div class="house-content">
+                                <image src='{{room_img}}'>
+                                <p class="house-text">
+                                        {{title}}
+                                </p>
+                                <div class="author">
+                                        <image class="human" src='{{user_photo}}'>
+                                </div>
+                                <p class="price">${{price}}</p>
+                        </div>
+                </article>
+        {{/each}}
+        <script>
+                var map;
+                function initMap() {
+                        map = new google.maps.Map(
+                                document.getElementById('map'),
+                                {center: new google.maps.LatLng(44.5638, -123.2794), zoom: 13}
+                        );
 
+                // var address = "5276 SW Meridian Pl. Corvallis, Oregon";
+                {{#each roomList}}
+                        var address = '{{address}}';
+                        var price = {{price}};
+                        dropMarkers(map, address, price)
+                {{/each}}
+                }
+
+                function dropMarkers(map, address, price){
+                        var geocoder = new google.maps.Geocoder();
+                        geocoder.geocode( { 'address': address}, function(results, status) {
+                                var lat;
+                                var lng;
+                                if (status == google.maps.GeocoderStatus.OK) {
+                                        lat = results[0].geometry.location.lat()
+                                        lng = results[0].geometry.location.lng()
+                                } else {
+                                        alert('Geocode was not successful for the following reason: ' + status);
+                                }
+
+                                console.log(lat);
+                                console.log(lng);
+
+                                var image = {
+                                        url: 'images/speech_bubble.png',
+                                        // This marker is 35 pixels wide by 35 pixels high.
+                                        size: new google.maps.Size(35, 20),
+                                        // The origin for this image is (0, 0).
+                                        origin: new google.maps.Point(0, 0),
+                                        // The anchor for this image is the base of the flagpole at (0, 32).
+                                        anchor: new google.maps.Point(0, 35)
+                                };
+
+                                var features = {
+                                        position: new google.maps.LatLng(lat, lng),
+                                        type: 'info'
+                                };
+
+                                // Create markers.
+                                // for (var i = 0; i < features.length; i++) {
+                                var marker = new google.maps.Marker({
+                                        position: features.position,
+                                        icon: image,
+                                        // icon: icons[features[i].type].icon,
+                                        map: map,
+                                        label: {
+                                                text: "$"+price,
+                                                color: 'white',
+                                                fontSize: '11px'
+                                        }
+                                });
+                                        // };
+                        })
+                }
+        </script>
+        </div>
+        <div id="map"></div>
 </main>

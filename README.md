@@ -44,4 +44,21 @@
         insert into users (email, username, password, created_on) values('kitaa@oregonstate.edu', 'kitaa', 'kitaa', current_timestamp);
 ## 10/17
 - make page correspond to database
--
+        ATSUHITOs-MacBook-Pro:community atsuhitokita$ heroku config
+         ›   Warning: heroku update available from 7.26.2 to 7.30.1.
+        === gentle-reaches-41737 Config Vars
+        DATABASE_URL: postgres://wnpieyyjdpuafz:185eddd4ed1dd74cf4a78212e21b1d8aee8b62b8c697bc3c5020e07307da7c3d@ec2-54-235-86-101.compute-1.amazonaws.com:5432/d8766rv6h7guam
+        PORT:         3000
+
+## 10/18
+- handles environment variables
+        How to use custom environment variables in Node
+        Create an .env file. The file should be placed in the root of your project
+        Install the dotenv library: npm install dotenv.
+        Require dotenv as early as possible (e.g. in app.js): require('dotenv').config({path: \__dirname + '/.env'}).
+        Wherever you need to use environment variables (e.g. in GitLab, in Jenkins, in Heroku, …) you need to add your environment variables. The way depends on the platform but it is usually easy to do.
+        Optional: create a function which runs at startup of your server. It should check whether all the required environment variables are set and throw an error otherwise.
+        from https://itnext.io/how-to-use-environment-variables-in-node-js-cb2ef0e9574a
+
+- drop marker to google map
+        https://gist.github.com/SamSamskies/6033264

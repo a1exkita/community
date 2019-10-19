@@ -1,18 +1,20 @@
 var express = require('express')
 var exphbs = require('express-handlebars')
 var bodyParser = require('body-parser')
+require('dotenv').config({path: __dirname + '/.env'})
 // heroku database
-const { Pool } = require('pg');
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL
-});
-pool.query('SELECT NOW()', (err, res) =>{
-        console.log(err, res)
-})
+// const { Pool } = require('pg');
+// const pool = new Pool({
+//   connectionString: process.env.DATABASE_URL
+// });
+// pool.query('SELECT NOW()', (err, res) =>{
+//         console.log(err, res)
+// })
 
-var port = process.env.PORT || 5000
+var port = process.env.PORT
 
 var app = express()
+var index = require('./routes/index') // come from module.exports
 var authentication = require('./routes/authentication') // come from module.exports
 
 
@@ -23,7 +25,7 @@ app.use(bodyParser.json())
 app.use(express.static('public'))
 
 
-app.get('/', (req, res) => res.status(200).render('index'))
+app.use('/', index)
 app.use('/authentication', authentication)
 
 

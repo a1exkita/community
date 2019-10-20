@@ -62,3 +62,8 @@
 
 - drop marker to google map
         https://gist.github.com/SamSamskies/6033264
+
+## 10/19
+- design authentication site
+- create user signup function
+        * use passport middleware function : https://www.freecodecamp.org/news/learn-how-to-handle-authentication-with-node-using-passport-js-4a56ed18e81e/

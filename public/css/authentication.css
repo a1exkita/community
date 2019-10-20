@@ -28,8 +28,8 @@ nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
 /*--end reset--*/
 body {
-  font-family: 'Jura', sans-serif;
-  background:#0a4981;
+  font-family: 'Muli', sans-serif;
+  background:#8327d0;
 }
 h1 {
   color: #fff;
@@ -42,6 +42,12 @@ h1 {
 .main {
   margin: 4em auto;
   width: 50%;
+}
+
+.main img {
+  width: 20%;
+  display: block;
+  margin: 0 auto;
 }
 .banner {
   background: url(../images/banner.jpg)no-repeat 0px 0px;
@@ -112,14 +118,14 @@ h1 {
   border: none;
   color: #fff;
   cursor: pointer;
-  background: #0b4379;
+  background: #fa3d3b;
   box-shadow: 0px 2px 1px rgba(28, 28, 29, 0.42);
       border-radius: 22px;
 
 }
 .signin-form input[type="submit"]:hover {
   color: #fff;
-  background: #002242;
+  background: #fa3b3db3;
   transition: .5s all;
       -webkit-transition: .5s all;
   -moz-transition: .5s all;

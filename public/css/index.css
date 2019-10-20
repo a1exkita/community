@@ -1,7 +1,8 @@
 body {
-        font-family: 'Karla', sans-serif, Roboto, Helvetica;
+        /* font-family: 'Karla', sans-serif, Roboto, Helvetica; */
+        font-family: 'Muli', sans-serif;
         margin: 0;
-        background-color: #ff057600;
+        background-color: #FFF;
 }
 
 a {
@@ -9,7 +10,7 @@ a {
 }
 
 .site-title {
-  font-family: 'Teko', sans-serif;
+  font-family: 'Muli', sans-serif;
   margin: 15px 15px;
   /* padding: 14px 25px; */
   font-size: 26pt;
@@ -45,14 +46,22 @@ a.plus {
 }
 
 .navbar {
-  background-color: #fff;
+  /* background-color: #8327d0; */
+  background-image: linear-gradient(-90deg, #ec2322, #8327d0);
   font-size: 18px;
   line-height: 22px;
-  border: #dadada;
+  /* border: #011e57;
   border-style: solid;
-  border-width: 1px 0 1px 0;
+  border-width: 0 0 1px 0; */
   position: fixed;
   width: 100%;
+}
+
+hr {
+        width: 95%;
+        background-color: #FFF;
+        border: 0 none;
+        height: 1px;
 }
 
 .navlist {
@@ -87,9 +96,9 @@ a:focus {
 }
 
 .navlink a {
-  padding: 8px 10px;
+  padding: 18px 30px;
   display: inline-block;
-  /* color: #000; */
+  color: #FFF;
   font-size: 11pt;
 }
 
@@ -137,7 +146,7 @@ a:focus {
 }
 
 .house-container {
-  /* margin: 50px 10%; */
+  margin: 6vh 0 0 0;
   display: flex;
   flex-wrap: wrap;
   width: 45%;
@@ -611,7 +620,7 @@ p.house-author {
         height: 96vh;
         width: 50%;
         z-index: 0;
-        margin-top: 4vh;
+        margin-top: 6vh;
         top: 0;
         right: 0;
         position: fixed;
